@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#000000">
+    
+    <title>Harry Mofoka | Creative Engineer</title>
+    <meta name="description" content="Harry Mofoka's personal portfolio. Full Stack Creative Engineer specializing in high-performance, liquid-smooth digital experiences.">
+    <meta name="keywords" content="Harry Mofoka, HM, Portfolio, Full Stack Developer, Creative Engineer, UI/UX, JavaScript, React">
+    <meta name="author" content="Harry Mofoka">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.com/">
+    <meta property="og:title" content="Harry Mofoka | Liquid OS Portfolio">
+    <meta property="og:description" content="Experience a web-based operating system portfolio designed by Harry Mofoka.">
+    <meta property="og:image" content="https://placehold.co/1200x630/007AFF/FFFFFF?text=HM+Portfolio">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://your-domain.com/">
+    <meta property="twitter:title" content="Harry Mofoka | Liquid OS Portfolio">
+    <meta property="twitter:description" content="Experience a web-based operating system portfolio designed by Harry Mofoka.">
+    <meta property="twitter:image" content="https://placehold.co/1200x630/007AFF/FFFFFF?text=HM+Portfolio">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <section id="lock-screen" aria-label="Lock Screen">
+        <div class="lock-content">
+            <div class="lock-icon">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            </div>
+            <h1 id="time">--:--</h1>
+            <h2 id="date">Loading...</h2>
+        </div>
+        <div class="lock-controls">
+            <button id="enter-btn" class="glass action-btn" aria-label="Unlock and enter portfolio">Enter System</button>
+        </div>
+    </section>
+
+    <!-- NEW: Shutdown Overlay -->
+    <div id="shutdown-overlay"></div>
+
+    <div id="wallpaper" role="presentation"></div>
+
+    <main id="desktop" class="hidden" aria-hidden="true">
+        
+        <!-- UPDATED: Menu Bar -->
+        <header id="menu-bar" class="glass">
+            <div class="menu-left">
+                <!-- NEW Power Button -->
+                <div id="power-button" class="menu-icon" role="button" aria-label="Shut down">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
+                        <line x1="12" y1="2" x2="12" y2="12"></line>
+                    </svg>
+                </div>
+                <b>Harry Mofoka</b>
+            </div>
+            <div class="menu-right">
+                <div id="signal-strength" class="menu-icon" aria-label="Signal strength: Full">
+                    <!-- Mocked signal strength icon -->
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2 16.1C2 15.5 2.4 15 3 15s1 .5 1 1.1V21c0 .6-.5 1-1.1 1S2 21.6 2 21v-4.9zM7 13.1c0-.6.5-1.1 1.1-1.1s1.1.5 1.1 1.1V21c0 .6-.5 1-1.1 1S7 21.6 7 21v-7.9zM12 10.1c0-.6.5-1.1 1.1-1.1s1.1.5 1.1 1.1V21c0 .6-.5 1-1.1 1s-1.1-.4-1.1-1v-10.9zM17 7.1c0-.6.5-1.1 1.1-1.1s1.1.5 1.1 1.1V21c0 .6-.5 1-1.1 1s-1.1-.4-1.1-1V7.1z"></path>
+                    </svg>
+                </div>
+                <div id="battery-status" class="menu-icon" aria-label="Battery status">
+                    <svg id="battery-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <!-- Battery outline -->
+                        <rect x="1" y="6" width="18" height="12" rx="2" ry="2"></rect>
+                        <line x1="23" y1="13" x2="23" y2="11"></line>
+                        <!-- Battery level fill (will be controlled by JS/CSS) -->
+                        <rect id="battery-fill" x="3" y="8" width="0" height="8" rx="1" ry="1" fill="currentColor"></rect>
+                    </svg>
+                    <span id="battery-level">--%</span>
+                </div>
+                <div id="menu-bar-date">Loading date...</div>
+            </div>
+        </header>
+        
+        <div id="widget-clock" class="widget glass" role="button" tabindex="0" title="Open Weather Center" aria-label="Clock Widget, click for weather">
+            <span id="widget-time">--:--</span>
+            <span id="widget-date">Loading...</span>
+        </div>
+
+        <!-- NEW: Finder Window -->
+        <div id="win-finder" class="window glass" role="dialog" aria-labelledby="finder-title" style="top: 15vh; left: 30vw; width: 550px; min-height: 300px;">
+             <div class="window-header">
+                <div class="win-controls">
+                    <span class="win-btn close-btn" aria-label="Close"></span><span class="win-btn min-btn" aria-label="Minimize"></span><span class="win-btn max-btn" aria-label="Maximize"></span>
+                </div>
+                <span id="finder-title" class="win-title">Finder</span>
+            </div>
+            <div class="window-content finder-layout">
+                <div class="finder-search-bar glass">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="finder-search-input" placeholder="Search Liquid OS...">
+                </div>
+                <div id="finder-results-area" class="finder-results glass">
+                    <!-- Results will be injected here by JS -->
+                    <h3>Start searching...</h3>
+                    <p>Search for apps (e.g., "About", "Contact"), projects ("Liquid OS"), or settings ("Wallpaper").</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="win-weather" class="window glass center-window" role="dialog" aria-labelledby="weather-title" style="width: 700px; height: 500px;">
+            <div class="window-header">
+                <div class="win-controls">
+                    <span class="win-btn close-btn" role="button" aria-label="Close window"></span>
+                    <span class="win-btn min-btn" role="button" aria-label="Minimize window"></span>
+                    <span class="win-btn max-btn" role="button" aria-label="Maximize window"></span>
+                </div>
+                <span id="weather-title" class="win-title">Weather</span>
+            </div>
+            <div class="window-content weather-layout">
+                <div class="weather-main">
+                    <div class="weather-search">
+                        <input type="text" id="weather-search-input" class="glass-input" placeholder="Search city..." aria-label="Search for a city">
+                        <button id="weather-search-btn" class="glass" aria-label="Search">🔍</button>
+                    </div>
+                    <div id="weather-icon-large" aria-hidden="true">--</div>
+                    <h1 id="weather-temp">--°</h1>
+                    <h3 id="weather-desc">Loading...</h3>
+                    <p id="weather-loc">Search or allow location</p>
+                </div>
+                <div class="weather-details glass">
+                    <div class="detail-item"><span>High</span><strong id="weather-high">--°</strong></div>
+                    <div class="detail-item"><span>Low</span><strong id="weather-low">--°</strong></div>
+                    <div class="detail-item"><span>Wind</span><strong id="weather-wind">--</strong></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="win-about" class="window glass" role="dialog" aria-labelledby="about-title" style="top: 8vh; left: 8vw;">
+            <div class="window-header">
+                <div class="win-controls">
+                    <span class="win-btn close-btn" aria-label="Close"></span><span class="win-btn min-btn" aria-label="Minimize"></span><span class="win-btn max-btn" aria-label="Maximize"></span>
+                </div>
+                <span id="about-title" class="win-title">About Me</span>
+            </div>
+            <div class="window-content">
+                <div class="profile-header">
+                    <div class="profile-pic" role="img" aria-label="Harry Mofoka Profile Picture" style="background-image: url('https://placehold.co/80x80/6B73FF/FFFFFF?text=HM');"></div>
+                    <div class="profile-info">
+                        <h2>Harry Mofoka</h2>
+                        <p class="subtitle">Full Stack Creative Engineer</p>
+                    </div>
+                </div>
+                <hr class="glass-divider">
+                <h3>Bio</h3>
+                <p>I craft high-performance digital experiences with a focus on liquid smooth interactions and pixel-perfect design. Currently building the future of web operating systems.</p>
+                <h3>Skills</h3>
+                <div class="skills-grid">
+                    <span class="skill-badge glass">JavaScript</span><span class="skill-badge glass">React</span>
+                    <span class="skill-badge glass">Node.js</span><span class="skill-badge glass">UI/UX Design</span>
+                    <span class="skill-badge glass">Python</span><span class="skill-badge glass">Swift</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="win-projects" class="window glass" role="dialog" aria-labelledby="projects-title" style="top: 12vh; left: 25vw;">
+             <div class="window-header">
+                <div class="win-controls">
+                    <span class="win-btn close-btn" aria-label="Close"></span><span class="win-btn min-btn" aria-label="Minimize"></span><span class="win-btn max-btn" aria-label="Maximize"></span>
+                </div>
+                <span id="projects-title" class="win-title">Projects</span>
+            </div>
+            <div class="window-content">
+                <div class="app-grid">
+                    <div class="app-icon-container" role="button" tabindex="0" data-project="1">
+                        <div class="app-icon glass" style="background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);"><span>🎨</span></div>
+                        <span class="app-name">Liquid OS</span>
+                    </div>
+                    <div class="app-icon-container" role="button" tabindex="0" data-project="2">
+                        <div class="app-icon glass" style="background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);"><span>📱</span></div>
+                        <span class="app-name">Swift Notes</span>
+                    </div>
+                    <div class="app-icon-container" role="button" tabindex="0" data-project="3">
+                        <div class="app-icon glass" style="background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);"><span>⚡</span></div>
+                        <span class="app-name">Neon DB</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="win-contact" class="window glass" role="dialog" aria-labelledby="contact-title" style="top: 18vh; left: 40vw;">
+             <div class="window-header">
+                <div class="win-controls">
+                    <span class="win-btn close-btn" aria-label="Close"></span><span class="win-btn min-btn" aria-label="Minimize"></span><span class="win-btn max-btn" aria-label="Maximize"></span>
+                </div>
+                <span id="contact-title" class="win-title">New Message</span>
+            </div>
+            <div class="window-content contact-layout">
+                <div class="input-group"><label for="contact-to">To:</label><input id="contact-to" type="text" value="Harry Mofoka" readonly class="glass-input readonly"></div>
+                <div class="input-group"><label for="contact-from">From:</label><input id="contact-from" type="email" placeholder="your@email.com" class="glass-input"></div>
+                <textarea placeholder="Type your message..." class="glass-input message-area" aria-label="Message body"></textarea>
+                <button class="send-btn">Send Message ↑</button>
+            </div>
+        </div>
+
+        <div id="win-settings" class="window glass" role="dialog" aria-labelledby="settings-title" style="top: 20vh; left: 50vw; width: 450px; min-height: 550px;">
+            <div class="window-header">
+                <div class="win-controls">
+                    <span class="win-btn close-btn" aria-label="Close"></span><span class="win-btn min-btn" aria-label="Minimize"></span><span class="win-btn max-btn" aria-label="Maximize"></span>
+                </div>
+                <span id="settings-title" class="win-title">Settings</span>
+            </div>
+            <div class="window-content">
+                <div class="setting-group glass">
+                    <h2>Appearance</h2>
+                    <div class="toggle-row">
+                        <label for="theme-toggle">Dark Mode</label>
+                        <label class="switch">
+                        <input type="checkbox" id="theme-toggle">
+                        <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="slider-container">
+                        <label for="blur-slider">Glass Transparency</label>
+                        <input type="range" min="0" max="50" value="30" class="range-slider" id="blur-slider">
+                    </div>
+                </div>
+                <div class="setting-group glass">
+                    <h2>Wallpaper</h2>
+                    <span class="wp-label">Solid Colors</span>
+                    <div class="wallpaper-grid" role="radiogroup" aria-label="Solid color wallpapers">
+                        <div class="wp-swatch" role="radio" aria-label="Black" data-bg="#000000" style="background: #000000;"></div>
+                        <div class="wp-swatch" role="radio" aria-label="White" data-bg="#f5f5f7" style="background: #f5f5f7;"></div>
+                        <div class="wp-swatch" role="radio" aria-label="Blue" data-bg="#007AFF" style="background: #007AFF;"></div>
+                        <div class="wp-swatch" role="radio" aria-label="Red" data-bg="#FF3B30" style="background: #FF3B30;"></div>
+                    </div>
+                    <span class="wp-label">Gradients</span>
+                    <div class="wallpaper-grid" role="radiogroup" aria-label="Gradient wallpapers">
+                        <div class="wp-swatch" role="radio" aria-label="Blue Purple Gradient" data-bg="linear-gradient(135deg, #6B73FF 0%, #000DFF 100%)" style="background: linear-gradient(135deg, #6B73FF 0%, #000DFF 100%);"></div>
+                        <div class="wp-swatch" role="radio" aria-label="Pink Orange Gradient" data-bg="linear-gradient(135deg, #FF9A9E 0%, #FAD0C4 100%)" style="background: linear-gradient(135deg, #FF9A9E 0%, #FAD0C4 100%);"></div>
+                        <div class="wp-swatch" role="radio" aria-label="Green Blue Gradient" data-bg="linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%)" style="background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);"></div>
+                        <div class="wp-swatch" role="radio" aria-label="Multicolor Gradient" data-bg="linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%)" style="background: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);"></div>
+                    </div>
+                    <span class="wp-label">Mesh & Patterns</span>
+                    <div class="wallpaper-grid" role="radiogroup" aria-label="Pattern wallpapers">
+                          <div class="wp-swatch" role="radio" aria-label="Dark Mesh" data-bg="radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%), #000" style="background: radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%), #000;"></div>
+                        <div class="wp-swatch" role="radio" aria-label="Conic Colorful" data-bg="conic-gradient(from 0deg at 50% 50%, blue, purple, purple, blue)" style="background: conic-gradient(from 0deg at 50% 50%, blue, purple, purple, blue);"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dock-container">
+            <nav class="dock glass" role="navigation" aria-label="Main Dock">
+                <!-- NEW: Finder Icon -->
+                <div class="dock-item" role="button" tabindex="0" data-target="finder" aria-label="Open Finder">
+                    <div class="dock-icon" style="font-size: 36px;">🔎</div>
+                    <span class="dock-label">Finder</span>
+                </div>
+                <!-- NEW: Separator -->
+                <div class="dock-separator" role="separator"></div>
+                
+                <div class="dock-item" role="button" tabindex="0" data-target="about" aria-label="Open About Me">
+                    <div class="dock-icon">👤</div>
+                    <span class="dock-label">About</span>
+                </div>
+                <div class="dock-item" role="button" tabindex="0" data-target="projects" aria-label="Open Projects">
+                    <div class="dock-icon">🚀</div>
+                    <span class="dock-label">Projects</span>
+                </div>
+                <div class="dock-item" role="button" tabindex="0" data-target="contact" aria-label="Open Contact">
+                    <div class="dock-icon">✉️</div>
+                    <span class="dock-label">Contact</span>
+                </div>
+                <div class="dock-separator" role="separator"></div>
+                <div class="dock-item" role="button" tabindex="0" data-target="settings" aria-label="Open Settings">
+                    <div class="dock-icon">⚙️</div>
+                    <span class="dock-label">Settings</span>
+                </div>
+            </nav>
+        </div>
+    </main>
+
+    <!-- TEMPLATE: Project Details Window -->
+    <template id="project-window-template">
+        <div class="window glass project-window" style="width: 600px; min-height: 400px;">
+            <div class="window-header">
+                <div class="win-controls">
+                    <span class="win-btn close-btn" aria-label="Close"></span>
+                    <span class="win-btn min-btn" aria-label="Minimize"></span>
+                    <span class="win-btn max-btn" aria-label="Maximize"></span>
+                </div>
+                <span class="win-title">Project Details</span>
+            </div>
+            <div class="window-content project-layout">
+                <div class="project-hero">
+                    <div class="project-icon-large"></div>
+                    <h1 class="project-title"></h1>
+                </div>
+                <div class="project-body">
+                    <h3>Overview</h3>
+                    <p class="project-desc"></p>
+                    <h3>Tech Stack</h3>
+                    <div class="project-tags skills-grid"></div>
+                    <div class="project-actions">
+                        <a href="#" target="_blank" class="glass action-btn project-link live-link">View Live ↗</a>
+                        <a href="#" target="_blank" class="glass action-btn project-link git-link">GitHub ⌨</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
