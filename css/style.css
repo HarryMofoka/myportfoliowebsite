@@ -33,6 +33,34 @@ body {
     background-color: #000; /* Fallback during load */
 }
 
+.bi {
+    display: inline-block;
+    font-size: 1em;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+.lock-icon .bi {
+    font-size: 2.2rem;
+}
+
+.menu-icon .bi {
+    font-size: 1.05rem;
+}
+
+.dock-icon .bi {
+    font-size: 1.75rem;
+}
+
+.search-icon .bi,
+#weather-search-btn .bi {
+    font-size: 1rem;
+}
+
+.app-icon .bi {
+    font-size: 1.6rem;
+}
+
 /* === WALLPAPER LAYER === */
 #wallpaper {
     position: fixed; inset: 0; z-index: -1;
