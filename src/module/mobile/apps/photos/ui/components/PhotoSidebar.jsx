@@ -54,7 +54,7 @@ const PhotoSidebarMobile = ({ activeTab, onTabChange, onScrollToCollections, onS
       {tabs.map(({ title, icon }) => {
         const isActive =
           activeTab === title ||
-          (title === "Collections" && ["Memories", "Places", "People"].includes(activeTab));
+          (title === "Collections" && ["Projects", "Experiments", "Portraits"].includes(activeTab));
         return (
           <button
             key={title}

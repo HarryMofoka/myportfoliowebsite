@@ -1,18 +1,5 @@
 import { useState } from "react";
-import {
-  Clock,
-  Heart,
-  MapPin,
-  Users,
-  Star,
-  Image,
-  Film,
-  Folder,
-  Share2,
-  Trash2,
-  ChevronDown,
-  ChevronRight,
-} from "lucide-react";
+import { Heart, Star, Image, Folder, Sparkles, User, ChevronDown } from "lucide-react";
 import { photosLinks } from "@constants";
 
 const sidebarSections = [
@@ -20,15 +7,15 @@ const sidebarSections = [
     title: "Library",
     items: [
       { id: "Library", label: "Library", icon: Image, color: "text-blue-500" },
-      { id: "Memories", label: "Memories", icon: Film, color: "text-orange-500" },
       { id: "Favorites", label: "Favourites", icon: Heart, color: "text-red-500" },
     ],
   },
   {
-    title: "People & Places",
+    title: "Collections",
     items: [
-      { id: "People", label: "People", icon: Users, color: "text-purple-500" },
-      { id: "Places", label: "Places", icon: MapPin, color: "text-green-500" },
+      { id: "Projects", label: "Projects", icon: Folder, color: "text-orange-500" },
+      { id: "Experiments", label: "Experiments", icon: Sparkles, color: "text-purple-500" },
+      { id: "Portraits", label: "Portraits", icon: User, color: "text-green-500" },
     ],
   },
 ];
@@ -92,9 +79,9 @@ const PhotoSidebarDesktop = ({ activeTab, onTabChange }) => {
 const PhotoSidebarMobile = ({ activeTab, onTabChange }) => {
   const tabIcons = {
     Library: Image,
-    Memories: Film,
-    Places: MapPin,
-    People: Users,
+    Projects: Folder,
+    Experiments: Sparkles,
+    Portraits: User,
     Favorites: Heart,
   };
 

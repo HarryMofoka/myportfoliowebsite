@@ -32,14 +32,14 @@ export default function manifest() {
     screenshots: [
       {
         src: "/readme/desktop.png",
-        sizes: "1920x1080",
+        sizes: "1440x900",
         type: "image/png",
         form_factor: "wide",
         label: "Harry Mofoka Desktop portfolio experience",
       },
       {
         src: "/readme/mobile.png",
-        sizes: "441x789",
+        sizes: "780x1688",
         type: "image/png",
         form_factor: "narrow",
         label: "Harry Mofoka Mobile portfolio experience",

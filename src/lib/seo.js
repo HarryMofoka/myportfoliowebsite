@@ -27,8 +27,8 @@ export function pageMetadata({ path = "/", title = SITE_NAME, description = SITE
       images: [
         {
           url: previewImage,
-          width: 1629,
-          height: 965,
+          width: 1440,
+          height: 900,
           alt: `${OWNER_NAME}'s macOS portfolio desktop preview`,
         },
       ],
