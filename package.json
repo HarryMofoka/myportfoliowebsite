@@ -1,0 +1,62 @@
+{
+  "name": "harry-mofoka-portfolio",
+  "private": true,
+  "license": "MIT",
+  "version": "2.0.0",
+  "description": "Harry Koena Mofoka's interactive macOS-inspired developer portfolio.",
+  "author": "Harry Koena Mofoka",
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "check": "npm run format:check && npm run lint",
+    "validate": "npm run check && npm run build",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss,json}\"",
+    "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,css,scss,json}\"",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,mjs,cjs}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{css,scss,json}": [
+      "prettier --write"
+    ]
+  },
+  "dependencies": {
+    "@gsap/react": "^2.1.2",
+    "@tailwindcss/postcss": "^4.3.0",
+    "@xterm/addon-fit": "^0.11.0",
+    "clsx": "^2.1.1",
+    "dayjs": "^1.11.21",
+    "gsap": "^3.15.0",
+    "html2canvas": "^1.4.1",
+    "immer": "^11.1.8",
+    "lucide-react": "^1.17.0",
+    "next": "16.2.6",
+    "postcss": "^8.5.15",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "react-pdf": "^10.4.1",
+    "react-tooltip": "^6.0.4",
+    "tailwindcss": "^4.3.0",
+    "xterm": "^5.3.0",
+    "zustand": "^5.0.14"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/react": "^19.2.5",
+    "@types/react-dom": "^19.2.3",
+    "baseline-browser-mapping": "^2.11.26",
+    "eslint": "^10.4.1",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^16.5.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.6",
+    "prettier": "^3.8.3"
+  }
+}

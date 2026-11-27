@@ -1,0 +1,71 @@
+@theme {
+  --font-georama: "Georama", sans-serif;
+  --font-roboto: "Roboto Mono", monospace;
+  --breakpoint-3xl: 1920px;
+}
+
+@utility flex-center {
+  @apply flex items-center justify-center;
+}
+
+@utility col-center {
+  @apply flex flex-col items-center justify-center;
+}
+
+@utility abs-center {
+  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+}
+
+@layer base {
+  main {
+    @apply w-dvw h-dvh overflow-hidden;
+  }
+
+  main.mobile-os {
+    overflow: visible;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100dvw;
+    height: 100dvh;
+    outline: none;
+    border: none;
+    background: transparent;
+  }
+}
+
+html,
+body {
+  font-family:
+    "SF Pro Display",
+    -apple-system,
+    BlinkMacSystemFont,
+    "SF Pro Text",
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 100dvw;
+  overflow: hidden;
+  height: 100dvh;
+  background-image: url("/wallpapers/wallpaper.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition:
+    filter 260ms ease,
+    background-color 260ms ease;
+  user-select: none;
+  touch-action: manipulation;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 767px) {
+  body {
+    background-image: url("/wallpapers/mobile/mobile-wallpaper.webp") !important;
+  }
+}

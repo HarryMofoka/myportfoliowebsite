@@ -1,0 +1,273 @@
+@layer base {
+  @keyframes appleMenuIn {
+    from {
+      opacity: 0;
+      transform: translateY(-6px) scale(0.985);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  nav.mac-navbar {
+    @apply flex justify-between items-center bg-transparent backdrop-blur-3xl sm:backdrop-blur-2xl p-2 px-5 sm:px-3 select-none z-[9999] relative;
+
+    @media (min-width: 640px) {
+      height: 33px;
+      box-shadow: none;
+    }
+
+    .nav-left,
+    .nav-right {
+      @apply flex items-center h-full max-sm:w-full max-sm:justify-center gap-5 sm:gap-0;
+    }
+
+    .apple-logo {
+      @apply h-[19px] sm:h-[18px] sm:mr-1 sm:pl-0 sm:pr-1 cursor-default;
+      filter: brightness(0) invert(1);
+    }
+
+    .nav-links {
+      @apply flex items-center h-full gap-1;
+
+      li {
+        @apply px-3 h-full flex items-center text-[13.5px] font-[600] tracking-normal rounded cursor-default transition-colors;
+        color: #ffffff;
+      }
+      li.font-bold {
+        @apply font-bold tracking-normal;
+      }
+    }
+
+    .status-icons {
+      @apply flex items-center gap-1 h-full;
+
+      li {
+        @apply h-full flex items-center px-[7px] cursor-default transition-colors rounded-sm;
+      }
+
+      .icon-hover {
+        @apply h-3.5 cursor-default transition-colors;
+        filter: brightness(0) invert(1);
+      }
+    }
+
+    time.nav-datetime {
+      @apply text-[13.5px] font-[500] tracking-normal ml-3 cursor-default inline-flex items-center;
+      color: #ffffff;
+    }
+
+    .nav-date-day,
+    .nav-date-month,
+    .nav-date-date {
+      margin-right: 6px;
+    }
+
+    .nav-date-ampm {
+      margin-left: 4px;
+    }
+
+    .battery-indicator {
+      @apply flex items-center gap-1.5 px-1 py-0.5 rounded cursor-default transition-colors;
+
+      .battery-text {
+        @apply text-[12px] font-[500] tracking-normal;
+        color: #ffffff;
+      }
+
+      .battery-icon-shell {
+        @apply relative w-[22px] h-[11px] rounded-[3px];
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        padding: 1px;
+
+        .battery-level {
+          @apply h-full rounded-[1px];
+          background: #ffffff;
+          transition: width 240ms ease;
+        }
+
+        i {
+          @apply absolute right-[-2.5px] top-1/2 -translate-y-1/2 w-[1.5px] h-1 rounded-full;
+          background: rgba(255, 255, 255, 0.8);
+          font-style: normal;
+        }
+      }
+
+      svg {
+        @apply size-3;
+        fill: #ffffff;
+      }
+
+      img {
+        filter: brightness(0) invert(1);
+      }
+    }
+
+    .apple-menu {
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 2px;
+      z-index: 99999;
+      width: 250px;
+      padding: 5px;
+      color: rgba(255, 255, 255, 0.94);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+      font-size: 13.5px;
+      line-height: 1.35;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      background: rgba(30, 30, 30, 0.55);
+      box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.35),
+        0 1px 0 rgba(255, 255, 255, 0.1) inset;
+      backdrop-filter: blur(40px) saturate(210%);
+      -webkit-backdrop-filter: blur(40px) saturate(210%);
+      transform-origin: top left;
+      animation: appleMenuIn 120ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mac-dropdown {
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      z-index: 99999;
+      width: max-content;
+      min-width: 220px;
+      max-width: 290px;
+      padding: 5px;
+      color: rgba(255, 255, 255, 0.94);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+      font-size: 13.5px;
+      line-height: 1.35;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      background: rgba(30, 30, 30, 0.55);
+      box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.35),
+        0 1px 0 rgba(255, 255, 255, 0.1) inset;
+      backdrop-filter: blur(40px) saturate(210%);
+      -webkit-backdrop-filter: blur(40px) saturate(210%);
+      transform-origin: top left;
+      animation: appleMenuIn 120ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .apple-menu-section {
+      padding: 3px 0;
+      border-bottom: 0.5px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .apple-menu-section:first-child {
+      padding-top: 0;
+    }
+
+    .apple-menu-section:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .apple-menu-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      min-height: 26px;
+      padding: 4px 9px 4px 10px;
+      border: 0;
+      border-radius: 6px;
+      background: transparent;
+      color: #ffffff;
+      font: inherit;
+      font-weight: 600;
+      letter-spacing: 0;
+      text-align: left;
+      cursor: default;
+      outline: none;
+      transition:
+        background-color 90ms ease,
+        color 90ms ease;
+    }
+
+    .apple-menu-item:hover,
+    .apple-menu-item:focus-visible {
+      color: #ffffff;
+      background: linear-gradient(180deg, #1687ff, #0071e3);
+    }
+
+    .apple-menu-item:disabled {
+      color: rgba(255, 255, 255, 0.42);
+    }
+
+    .apple-menu-item:disabled:hover {
+      background: transparent;
+      color: rgba(255, 255, 255, 0.42);
+    }
+
+    .apple-menu-meta {
+      margin-left: 18px;
+      color: rgba(255, 255, 255, 0.58);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .apple-menu-item:hover .apple-menu-meta,
+    .apple-menu-item:focus-visible .apple-menu-meta {
+      color: rgba(255, 255, 255, 0.94);
+    }
+
+    .control-center-mac {
+      @apply absolute right-2.5 top-[36px] w-[350px] flex flex-col select-none z-[9999] p-3 font-sans;
+      background: rgba(40, 40, 42, 0.45);
+      border-radius: 20px;
+      color: white;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+      border: 1.5px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(40px) saturate(210%);
+      opacity: 0;
+      transform: translateY(-8px) scale(0.98);
+      pointer-events: none;
+      transition:
+        opacity 160ms cubic-bezier(0.16, 1, 0.3, 1),
+        transform 160ms cubic-bezier(0.16, 1, 0.3, 1);
+      transform-origin: top right;
+
+      &.is-open {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
+      }
+
+      input[type="range"].mac-slider {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: 26px;
+        border-radius: 9999px;
+        background: rgba(255, 255, 255, 0.16);
+        outline: none;
+        overflow: hidden;
+
+        &::-webkit-slider-runnable-track {
+          width: 100%;
+          height: 26px;
+          border-radius: 9999px;
+          background: transparent;
+        }
+
+        &::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 26px;
+          height: 26px;
+          border-radius: 9999px;
+          background: white;
+          box-shadow:
+            -400px 0 0 388px white,
+            0 1px 3px rgba(0, 0, 0, 0.25);
+          cursor: pointer;
+          border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+      }
+    }
+  }
+}
