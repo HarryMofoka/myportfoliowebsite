@@ -1,0 +1,90 @@
+export const FEATURED_SHOW = {
+  title: "Severance",
+  category: "Sci-Fi Thriller",
+  description:
+    "Mark leads a team of office workers whose memories have been surgically divided between their work and personal lives. When a mysterious colleague appears outside of work, it begins a journey to discover the truth about their jobs.",
+  bgImage: "bg-gradient-to-br from-neutral-900 via-slate-950 to-zinc-900",
+  videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
+  tmdbId: "95396",
+  type: "tv",
+  season: 1,
+  episode: 1,
+};
+
+export const MOVIES = [
+  {
+    id: "the_morning_show",
+    title: "The Morning Show",
+    category: "Drama • Apple TV+",
+    duration: "4 Seasons",
+    tmdbId: "80752",
+    type: "tv",
+    season: 1,
+    episode: 1,
+    poster: "bg-gradient-to-br from-sky-900 to-slate-950",
+  },
+  {
+    id: "slow_horses",
+    title: "Slow Horses",
+    category: "Spy Thriller • Apple TV+",
+    duration: "5 Seasons",
+    tmdbId: "95480",
+    type: "tv",
+    season: 1,
+    episode: 1,
+    poster: "bg-gradient-to-br from-stone-800 to-neutral-950",
+  },
+  {
+    id: "shrinking",
+    title: "Shrinking",
+    category: "Comedy • Apple TV+",
+    duration: "3 Seasons",
+    tmdbId: "136311",
+    type: "tv",
+    season: 1,
+    episode: 1,
+    poster: "bg-gradient-to-br from-amber-700 to-orange-950",
+  },
+  {
+    id: "black_bird",
+    title: "Black Bird",
+    category: "Crime Drama • Apple TV+",
+    duration: "Limited Series",
+    tmdbId: "155537",
+    type: "tv",
+    season: 1,
+    episode: 1,
+    poster: "bg-gradient-to-br from-slate-700 to-black",
+  },
+];
+
+export const STORE_MOVIES = [
+  {
+    title: "Dune: Part Two",
+    price: "$14.99 Buy",
+    posterBg: "from-amber-600 to-yellow-800",
+    tmdbId: "823464",
+    type: "movie",
+  },
+  {
+    title: "Oppenheimer",
+    price: "$5.99 Rent",
+    posterBg: "from-neutral-700 to-zinc-900",
+    tmdbId: "872585",
+    type: "movie",
+  },
+  {
+    title: "Spider-Man: Across the Spider-Verse",
+    price: "$14.99 Buy",
+    posterBg: "from-red-600 to-indigo-900",
+    tmdbId: "569094",
+    type: "movie",
+  },
+  {
+    title: "Interstellar",
+    price: "$3.99 Rent",
+    posterBg: "from-blue-900 to-slate-900",
+    tmdbId: "157336",
+    type: "movie",
+  },
+];
