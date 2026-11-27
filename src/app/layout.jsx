@@ -1,14 +1,155 @@
 import "../styles/index.css";
+import {
+  EMAIL,
+  GITHUB_PROFILE,
+  INSTAGRAM_URL,
+  LINKEDIN_URL,
+  NEXLINK_URL,
+  OWNER_ROLE,
+} from "@constants/env";
+import { OWNER_NAME, SITE_DESCRIPTION, SITE_NAME, pageMetadata } from "../lib/seo";
+import { absoluteSiteUrl, isPreviewDeployment, siteUrl } from "../lib/site-url";
+
+const sameAs = [GITHUB_PROFILE, LINKEDIN_URL, INSTAGRAM_URL, NEXLINK_URL].filter(Boolean);
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": absoluteSiteUrl("/#website"),
+    name: SITE_NAME,
+    url: siteUrl,
+    description: SITE_DESCRIPTION,
+    inLanguage: "en",
+    author: { "@id": absoluteSiteUrl("/#person") },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": absoluteSiteUrl("/#person"),
+    name: OWNER_NAME,
+    url: siteUrl,
+    email: `mailto:${EMAIL}`,
+    jobTitle: OWNER_ROLE,
+    worksFor: {
+      "@type": "Organization",
+      name: "Nexlink Solutions ZA",
+      url: NEXLINK_URL,
+    },
+    homeLocation: {
+      "@type": "Place",
+      name: "Gauteng, South Africa",
+    },
+    sameAs,
+  },
+];
 
 export const metadata = {
-  title: "Harry Koena Mofoka | macOS Portfolio",
-  description:
-    "Interactive macOS-inspired developer portfolio for Harry Koena Mofoka — software developer, product builder, and co-founder of Nexlink Solutions ZA.",
+  metadataBase: new URL(siteUrl),
+  ...pageMetadata({}),
+  applicationName: SITE_NAME,
+  generator: "Next.js",
+  referrer: "origin-when-cross-origin",
+  title: {
+    default: SITE_NAME,
+    template: `%s | ${OWNER_NAME}`,
+  },
+  authors: [{ name: OWNER_NAME, url: siteUrl }],
+  creator: OWNER_NAME,
+  publisher: OWNER_NAME,
+  category: "technology",
+  classification: "Portfolio",
+  manifest: "/manifest.webmanifest",
+  icons: {
+    icon: [
+      { url: "/favicon/favicon.ico", sizes: "any", type: "image/x-icon" },
+      { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    shortcut: "/favicon/favicon.ico",
+    apple: [{ url: "/favicon/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
+  appleWebApp: {
+    capable: true,
+    title: SITE_NAME,
+    statusBarStyle: "black-translucent",
+  },
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  robots: {
+    index: !isPreviewDeployment,
+    follow: !isPreviewDeployment,
+    googleBot: {
+      index: !isPreviewDeployment,
+      follow: !isPreviewDeployment,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
+
+export const viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
+    { media: "(prefers-color-scheme: light)", color: "#f5f5f7" },
+  ],
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning={true}>
+      <head>
+        <link rel="preconnect" href="https://api.github.com" />
+        <link rel="preconnect" href="https://api.jamendo.com" />
+        <link rel="preconnect" href="https://prod-1.storage.jamendo.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://wttr.in" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                const removeAttr = (el) => {
+                  if (el.removeAttribute) {
+                    el.removeAttribute('bis_skin_checked');
+                  }
+                };
+                const observer = new MutationObserver((mutations) => {
+                  mutations.forEach((m) => {
+                    if (m.type === 'attributes' && m.attributeName === 'bis_skin_checked') {
+                      removeAttr(m.target);
+                    }
+                    if (m.addedNodes) {
+                      m.addedNodes.forEach((n) => {
+                        if (n.nodeType === 1) {
+                          removeAttr(n);
+                          n.querySelectorAll('[bis_skin_checked]').forEach(removeAttr);
+                        }
+                      });
+                    }
+                  });
+                });
+                observer.observe(document.documentElement, {
+                  childList: true,
+                  subtree: true,
+                  attributes: true,
+                  attributeFilter: ['bis_skin_checked']
+                });
+              })();
+            `,
+          }}
+        />
+      </head>
       <body suppressHydrationWarning={true}>{children}</body>
     </html>
   );
