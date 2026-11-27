@@ -1,0 +1,46 @@
+const LaunchpadGrid = ({ apps, onLaunch, searchQuery }) => (
+  <div className="w-full max-w-4.5xl flex-1 overflow-y-auto px-4">
+    <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-7 lg:grid-cols-8 gap-y-12 gap-x-8 justify-items-center justify-center">
+      {apps.map((app) => (
+        <button
+          key={app.id}
+          onClick={(e) => {
+            e.stopPropagation();
+            onLaunch(app.id);
+          }}
+          className="flex flex-col items-center gap-2.5 group focus:outline-none cursor-default w-20"
+        >
+          <div className="w-[72px] h-[72px] rounded-[18px] bg-transparent transition-transform duration-200 ease-out group-hover:scale-105 group-active:scale-95 flex items-center justify-center relative select-none">
+            {app.id === "calendar" ? (
+              <div className="w-full h-full bg-white rounded-[18px] border border-black/10 shadow-md overflow-hidden flex flex-col items-center select-none aspect-square">
+                <div className="w-full bg-[#ff3b30] text-white text-[10px] font-extrabold py-0.5 md:py-1 text-center leading-none tracking-wider uppercase">
+                  {["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"][new Date().getDay()]}
+                </div>
+                <div className="flex-1 flex items-center justify-center text-gray-800 font-bold text-3xl leading-none font-sans -mt-0.5">
+                  {new Date().getDate()}
+                </div>
+              </div>
+            ) : (
+              <img
+                src={app.icon?.startsWith("/") ? app.icon : `/apps/${app.icon}`}
+                alt={app.name}
+                className="w-full h-full object-contain filter drop-shadow-sm"
+              />
+            )}
+          </div>
+          <span className="text-white text-[11px] font-normal tracking-wide text-center text-shadow-sm select-none truncate w-full mt-1">
+            {app.name}
+          </span>
+        </button>
+      ))}
+    </div>
+
+    {apps.length === 0 && (
+      <div className="text-white/40 text-center py-20 text-sm">
+        No Applications found matching "{searchQuery}"
+      </div>
+    )}
+  </div>
+);
+
+export default LaunchpadGrid;
